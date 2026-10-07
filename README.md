@@ -2,6 +2,8 @@
 
 # CyberLab 🛡️
 
+[![CI](https://github.com/w7by4nrcfd-cpu/cyberlab/actions/workflows/ci.yml/badge.svg)](https://github.com/w7by4nrcfd-cpu/cyberlab/actions/workflows/ci.yml) ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+
 **منصة عربية تفاعلية لتعلّم الأمن السيبراني من الصفر**: دروس قصيرة، واختبارات تُصحَّح على الخادم، ومختبرات محاكاة، وتحقيقات SOC، وتتبّع حقيقي للتقدّم.
 
 [English below ⬇️](#english)
@@ -30,7 +32,7 @@
 المتطلبات: Node.js بإصدار 22.13 أو أحدث.
 
 ```bash
-npm run install:ci      # تثبيت الاعتماديات
+pnpm install            # تثبيت الاعتماديات (pnpm 11)
 npm run dev             # خادم التطوير على http://localhost:5173
 npm run build           # بناء نسخة الإنتاج
 npm run lint            # فحص ESLint
@@ -40,7 +42,7 @@ npm run db:generate     # توليد ترحيل لقاعدة البيانات ب
 الاختبارات في `tests/` ملفات Node (`*.test.mjs`)، وتُشغَّل بعد التثبيت هكذا:
 
 ```bash
-node --test tests/
+for t in tests/*.test.mjs; do node "$t"; done
 ```
 
 ## هيكل المشروع
@@ -58,6 +60,10 @@ docs/         التدقيق، سجل التطوير، دليل المطوّر
 دليل المطوّر الكامل: [`docs/CyberLab-Guide.md`](docs/CyberLab-Guide.md)
 سجل التطوير: [`docs/CHANGELOG.md`](docs/CHANGELOG.md)
 ملاحظات القالب الأصلي (vinext starter): [`docs/STARTER.md`](docs/STARTER.md)
+
+## الترخيص
+
+MIT — انظر [`LICENSE`](LICENSE). ملفات `vendor/` و`build/` المضمّنة لها تراخيصها الخاصة بجانبها.
 
 ## السلامة والحدود
 
@@ -86,11 +92,11 @@ Next.js 16 on vinext (Vite) · React 19 · Tailwind CSS 4 · shadcn/ui · Cloudf
 
 ### Getting started
 ```bash
-npm run install:ci
+pnpm install
 npm run dev          # http://localhost:5173
 npm run build
 npm run lint
-node --test tests/
+for t in tests/*.test.mjs; do node "$t"; done
 ```
 Requires Node.js >= 22.13.
 

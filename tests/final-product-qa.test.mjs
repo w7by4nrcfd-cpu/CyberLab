@@ -69,8 +69,9 @@ try{
  await mount('lesson',null,{lesson,next:'network-6',returnTo},'/learn/network-5?return_to='+encodeURIComponent(returnTo));const guestAuth=nodes().filter(n=>n.type==='a'&&String(n.props.href).startsWith('/signin-with-chatgpt'));assert(guestAuth.length);assert(guestAuth.every(n=>new URL(n.props.href,'http://local.test').searchParams.get('return_to')==='/learn/network-5?return_to='+encodeURIComponent(returnTo)));
  // Product audit: preserving context through a reference's optional lab and prerequisites.
  await mount('lesson','reader',{lesson,next:'network-6',returnTo},'/learn/network-5?return_to='+encodeURIComponent(returnTo));
- const relatedLab=nodes().find(n=>n.type==='a'&&String(n.props.href).startsWith('/labs/v2/v2-network?'));
- assert.equal(new URL(relatedLab.props.href,'http://local.test').searchParams.get('return_to'),returnTo);
+ // Lessons opened from a case no longer offer a side lab (LessonPracticeRoute/LabBridge stay hidden);
+ // any lab link that is shown must still carry the case context.
+ for(const l of nodes().filter(n=>n.type==='a'&&String(n.props.href).startsWith('/labs/v2/')))assert.equal(new URL(l.props.href,'http://local.test').searchParams.get('return_to'),returnTo);
  const prerequisite=nodes().find(n=>n.type==='a'&&String(n.props.href).startsWith('/learn/network-1'));
  assert.equal(new URL(prerequisite.props.href,'http://local.test').searchParams.get('return_to'),returnTo);
  // Real asynchronous source ordering: SOC arrives before the board. Do not downgrade the return URL.

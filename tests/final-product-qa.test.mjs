@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {execFileSync} from 'node:child_process';
+import {hasCommit,skipBaseline} from './helpers/git-baseline.mjs';
 import {readFile,readdir,mkdtemp,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join,resolve,relative} from 'node:path';
@@ -8,11 +9,11 @@ import {pathToFileURL} from 'node:url';
 const require=createRequire(import.meta.url),wranglerRequire=createRequire(require.resolve('wrangler/package.json'));
 const {Miniflare}=await import(wranglerRequire.resolve('miniflare'));
 const {build}=createRequire(require.resolve('vite/package.json'))('esbuild');
-const baseline='8dd247a2ae5c6248f6c86c116156d9e9d42e1acf';
+const baseline='8dd247a2ae5c6248f6c86c116156d9e9d42e1acf',hasBaseline=hasCommit(baseline);
 async function load(entry,previous=false){const b=await build({entryPoints:[entry],bundle:true,platform:'node',format:'esm',write:false,logLevel:'silent',plugins:previous?[{name:'baseline',setup(b){b.onLoad({filter:/\/lib\/.*\.ts$/},a=>({loader:'ts',contents:execFileSync('git',['show',baseline+':'+relative(process.cwd(),a.path)],{encoding:'utf8'})}))}}]:[]});return import('data:text/javascript;base64,'+Buffer.from(b.outputFiles[0].text).toString('base64'))}
-const curriculum=await load('lib/curriculum.ts'),previous=await load('lib/curriculum.ts',true),labs=await load('lib/interactive-labs.ts'),previousLabs=await load('lib/interactive-labs.ts',true),scope=await load('lib/content-scope.ts'),core=await load('lib/mission-first-core.ts'),search=await load('lib/site-search.ts');
+const curriculum=await load('lib/curriculum.ts'),previous=hasBaseline?await load('lib/curriculum.ts',true):null,labs=await load('lib/interactive-labs.ts'),previousLabs=hasBaseline?await load('lib/interactive-labs.ts',true):null,scope=await load('lib/content-scope.ts'),core=await load('lib/mission-first-core.ts'),search=await load('lib/site-search.ts');
 assert.equal(curriculum.lessons.length,220);assert.deepEqual(scope.scopeCounts(),{CYBER_CORE:135,CYBER_SUPPORTING:60,OUT_OF_SCOPE:25});
-const contracts=m=>m.lessons.map(l=>({id:l.id,track:l.track,level:l.level,module:l.module,questions:l.questions,prerequisites:l.prerequisites}));assert.deepEqual(contracts(curriculum),contracts(previous),'no IDs, quiz contract or existing prerequisite changes');assert.deepEqual(curriculum.labs,previous.labs);assert.deepEqual(labs.interactiveLabs,previousLabs.interactiveLabs,'no lab definitions/rewards/unlocks added or changed');
+const contracts=m=>m.lessons.map(l=>({id:l.id,track:l.track,level:l.level,module:l.module,questions:l.questions,prerequisites:l.prerequisites}));if(hasBaseline){assert.deepEqual(contracts(curriculum),contracts(previous),'no IDs, quiz contract or existing prerequisite changes');assert.deepEqual(curriculum.labs,previous.labs);assert.deepEqual(labs.interactiveLabs,previousLabs.interactiveLabs,'no lab definitions/rewards/unlocks added or changed')}else skipBaseline(baseline,'curriculum/lab contract comparison');
 for(const id of ['security-5','security-6','web-7','web-9','web-security-7','web-security-12','network-security-1','web-10','web-security-6']){const l=curriculum.lessons.find(x=>x.id===id);assert(l.sections.length>=3);assert(!l.sections.some(s=>s.text.includes('المفهوم المجاور')));assert(l.code.includes('\n'),'reference adds a concrete comparison beyond the card')}
 const directory=await mkdtemp(join(tmpdir(),'cyberlab-final-qa-')),uiDir=await mkdtemp(resolve('.sites-runtime/final-qa-ui-'));
 const modules=['index.js',...(await readdir('dist/server',{recursive:true})).filter(f=>f.endsWith('.js')&&f!=='index.js')].map(f=>({type:'ESModule',path:'dist/server/'+f}));const options={modules,compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],d1Databases:['DB'],d1Persist:directory,cf:false};let worker;

@@ -3,20 +3,28 @@ import {createRequire} from 'node:module';
 import {readFile} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import {pathToFileURL} from 'node:url';
+import {hasCommit,skipBaseline} from './helpers/git-baseline.mjs';
 const require=createRequire(import.meta.url),{build}=createRequire(require.resolve('vite/package.json'))('esbuild');
 async function load(entry){const b=await build({entryPoints:[entry],bundle:true,platform:'node',format:'esm',write:false,logLevel:'silent'});return import('data:text/javascript;base64,'+Buffer.from(b.outputFiles[0].text).toString('base64'))}
 const {lessons}=await load('lib/curriculum.ts'),{lessonClarity}=await load('lib/lesson-clarity.ts');
 const baselineCommit='a3e132d3545843024079079e11516cd8185894ff';
+let baseline=null;
+if(hasCommit(baselineCommit)){
 const before=execFileSync('git',['show',baselineCommit+':lib/curriculum.ts'],{encoding:'utf8'}),beforeClarity=execFileSync('git',['show',baselineCommit+':lib/lesson-clarity.ts'],{encoding:'utf8'});
 const baselineBuild=await build({stdin:{contents:before,resolveDir:process.cwd()+'/lib',sourcefile:'baseline.ts',loader:'ts'},bundle:true,platform:'node',format:'esm',write:false,logLevel:'silent',plugins:[{name:'baseline-clarity',setup(b){b.onLoad({filter:/\/lesson-clarity\.ts$/},()=>({contents:beforeClarity,loader:'ts'}))}}]});
-const baseline=await import('data:text/javascript;base64,'+Buffer.from(baselineBuild.outputFiles[0].text).toString('base64'));
+baseline=await import('data:text/javascript;base64,'+Buffer.from(baselineBuild.outputFiles[0].text).toString('base64'));
+}
+if(baseline){
 assert.deepEqual(lessons.map(l=>l.id),baseline.lessons.map(l=>l.id),'all lesson IDs and order preserved');
 for(const l of lessons){const old=baseline.lessons.find(x=>x.id===l.id);assert.deepEqual(l.questions,old.questions,'assessment unchanged: '+l.id);assert.equal(l.minutes,old.minutes);if(!lessonClarity[l.id])assert.deepEqual(l,old,'outside lesson scope: '+l.id)}
+}else skipBaseline(baselineCommit,'lesson/assessment comparison with the pre-simplification curriculum');
 assert.equal(Object.keys(lessonClarity).length,22);
 const explanationFields=['intro','sections','code','output','exercise','takeaways','objectives'];
 const newScope=['network-1','network-3','network-4','network-6','linux-3','linux-4','linux-5','linux-6','linux-8','linux-9','soc-1','soc-5','soc-8'];
+if(baseline){
 assert.deepEqual(lessons.filter(l=>JSON.stringify(l)!==JSON.stringify(baseline.lessons.find(old=>old.id===l.id))).map(l=>l.id).sort(),newScope.toSorted(),'only the 13 selected explanations change');
 for(const l of lessons){const old=baseline.lessons.find(x=>x.id===l.id),withoutExplanation=x=>Object.fromEntries(Object.entries(x).filter(([k])=>!explanationFields.includes(k)));assert.deepEqual(withoutExplanation(l),withoutExplanation(old),'all other metadata, questions, interactions and requirements unchanged: '+l.id)}
+}
 for(const id of Object.keys(lessonClarity)){const l=lessons.find(x=>x.id===id);assert(l.sections.every(s=>s.title&&s.text));assert(!l.sections.some(s=>s.text===l.intro),'no repeated introduction');assert(l.code&&l.output&&l.exercise);assert.equal(l.takeaways.length,3)}
 const jsx=pathToFileURL(require.resolve('react/jsx-runtime')).href;
 async function compile(entry){

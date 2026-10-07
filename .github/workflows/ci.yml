@@ -53,3 +53,26 @@ jobs:
             printf '::error::Failed: %s\n' "${failed[@]}"
             exit 1
           fi
+
+      - name: Browser smoke test (production build, guest session)
+        shell: bash
+        env:
+          PLAYWRIGHT_DIR: ${{ runner.temp }}/pw/node_modules
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pw" --no-save --no-audit --no-fund playwright@1.49.1 >/dev/null
+          npx --prefix "$RUNNER_TEMP/pw" playwright install --with-deps chromium >/dev/null
+          for f in $(ls drizzle/*.sql | sort); do
+            node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local \
+              --config dist/server/wrangler.json --persist-to .wrangler/state --file "$f" >/dev/null
+          done
+          pnpm start -- --port 8787 > server.log 2>&1 &
+          for i in $(seq 1 60); do curl -fs -o /dev/null http://127.0.0.1:8787/ && break; sleep 2; done
+          node .github/scripts/browser-smoke.mjs || { echo '--- server log ---'; tail -50 server.log; exit 1; }
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-screenshots
+          path: smoke-screenshots/
+          if-no-files-found: ignore

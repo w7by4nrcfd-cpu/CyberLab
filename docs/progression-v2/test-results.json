@@ -1,0 +1,143 @@
+{
+  "candidate": 57,
+  "production": 55,
+  "build": "PASS",
+  "typeCheck": "PASS",
+  "suites": [
+    {
+      "file": "adaptive-learning.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "answers.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "boss-missions.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "campaign.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "career.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "core.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "curriculum-expansion.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "cybersecurity-scope.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "deep-practice.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "dynamic-incidents.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "final-product-qa.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "guided-progression.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "interactive-labs.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "investigation-board.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "mission-first-core.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "mission-first-email.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "mission-first-expansion.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "mission-first-pilot.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "missions.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "navigation.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "nexacorp.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "offensive-minimum.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "offensive-pilot.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "persistence.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "progression-ui.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "progression-v2.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "ranks.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "security-readiness.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "site-navigation.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "skills.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "soc.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "ui-polish.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "file": "worker.test.mjs",
+      "status": "PASS"
+    }
+  ],
+  "browser": "Chrome; isolated local Worker/D1; synthetic test accounts",
+  "productionTested": false,
+  "iphoneSafariTested": false
+}

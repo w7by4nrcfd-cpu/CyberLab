@@ -1,0 +1,22 @@
+/* Filter controls own one border; generic panel/form styles remain defaults. */
+.soc-page .soc-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-block:20px;min-inline-size:0}
+.soc-page .soc-filters>label{display:grid;gap:8px;min-inline-size:0;margin:0;padding:0;border:0;background:transparent;min-block-size:0;font-size:1rem;color:var(--foreground)}
+.soc-page .soc-filters>.soc-search{grid-column:1/-1}
+.soc-filter-label{display:block;font-weight:600;font-size:.875rem;line-height:1.6}
+.soc-page .soc-filter-control{display:flex;align-items:center;gap:10px;min-inline-size:0;min-block-size:52px;padding-inline:14px;background:var(--secondary);border:1px solid var(--border);border-radius:10px;color:var(--muted-foreground)}
+.soc-page .soc-filter-control:focus-within{border-color:var(--primary);outline:2px solid var(--ring);outline-offset:3px}
+.soc-page .soc-filter-control>input,.soc-page .soc-filter-control>select{display:block;flex:1;inline-size:100%;min-inline-size:0;max-inline-size:100%;min-block-size:50px;block-size:auto;margin:0;padding:12px 0;border:0;border-radius:0;background:transparent;color:var(--foreground);box-shadow:none;font:inherit;font-size:1rem;line-height:1.6}
+.soc-page .soc-filter-control>input::placeholder{color:var(--muted-foreground);opacity:1}
+.soc-page .soc-filter-control>input:focus-visible,.soc-page .soc-filter-control>select:focus-visible{outline:0}
+.soc-page .soc-filter-control>svg{flex:none;pointer-events:none}
+.soc-page .soc-filter-select{position:relative}
+.soc-page .soc-filter-select>select{-webkit-appearance:none;appearance:none;cursor:pointer;padding-inline-end:28px;text-overflow:ellipsis}
+.soc-page .soc-filter-select>svg{position:absolute;inset-inline-end:14px;inset-block-start:50%;transform:translateY(-50%)}
+.soc-page .soc-filter-control>select option{background:var(--card);color:var(--foreground)}
+.soc-page .soc-filter-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-block:12px}
+.soc-page .soc-filter-actions>span{font-size:.9375rem;color:var(--muted-foreground)}
+.soc-page .soc-filter-actions>button{min-block-size:48px;margin:0}
+.soc-page .soc-section-head{align-items:center;flex-wrap:wrap}
+.soc-page .soc-section-head>span{font-size:.9375rem}
+.practice-check .practice-check-option{display:flex;align-items:flex-start;gap:12px;margin:0}
+@media(max-width:650px){.soc-page .soc-filters{grid-template-columns:minmax(0,1fr);gap:14px}.soc-page .soc-filters>.soc-search{grid-column:auto}.soc-page .soc-filter-control{padding-inline:12px}.soc-page .soc-filter-select>svg{inset-inline-end:12px}}

@@ -1,0 +1,112 @@
+[
+  {
+    "page": "progress",
+    "width": 375,
+    "contentWidth": 360,
+    "overflow": 0,
+    "primary": [
+      {
+        "bottom": 524.609375,
+        "top": 476.609375,
+        "visible": true
+      }
+    ],
+    "scrollWidth": 360,
+    "smallControls": 0
+  },
+  {
+    "page": "progress",
+    "width": 390,
+    "contentWidth": 375,
+    "overflow": 0,
+    "primary": [
+      {
+        "bottom": 524.609375,
+        "top": 476.609375,
+        "visible": true
+      }
+    ],
+    "scrollWidth": 375,
+    "smallControls": 0
+  },
+  {
+    "page": "progress",
+    "width": 402,
+    "contentWidth": 387,
+    "overflow": 0,
+    "primary": [
+      {
+        "bottom": 524.609375,
+        "top": 476.609375,
+        "visible": true
+      }
+    ],
+    "scrollWidth": 387,
+    "smallControls": 0
+  },
+  {
+    "page": "progress",
+    "width": 430,
+    "contentWidth": 415,
+    "overflow": 0,
+    "primary": [
+      {
+        "bottom": 499.421875,
+        "top": 451.421875,
+        "visible": true
+      }
+    ],
+    "scrollWidth": 415,
+    "smallControls": 0
+  },
+  {
+    "page": "progress",
+    "width": 1280,
+    "contentWidth": 1265,
+    "overflow": 0,
+    "primary": [
+      {
+        "bottom": 491.578125,
+        "top": 443.578125,
+        "visible": true
+      }
+    ],
+    "scrollWidth": 1265,
+    "smallControls": 0
+  },
+  {
+    "page": "achievements",
+    "width": 375,
+    "contentWidth": 360,
+    "overflow": 0,
+    "scrollWidth": 360
+  },
+  {
+    "page": "achievements",
+    "width": 390,
+    "contentWidth": 375,
+    "overflow": 0,
+    "scrollWidth": 375
+  },
+  {
+    "page": "achievements",
+    "width": 402,
+    "contentWidth": 387,
+    "overflow": 0,
+    "scrollWidth": 387
+  },
+  {
+    "page": "achievements",
+    "width": 430,
+    "contentWidth": 415,
+    "overflow": 0,
+    "scrollWidth": 415
+  },
+  {
+    "page": "achievements",
+    "width": 1280,
+    "contentWidth": 1265,
+    "overflow": 0,
+    "scrollWidth": 1265
+  }
+]

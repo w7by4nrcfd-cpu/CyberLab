@@ -1,0 +1,27 @@
+// Source/stylesheet regression checks, not an iPhone/Safari or visual audit.
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url),postcss=createRequire(require.resolve('vite/package.json'))('postcss');
+const read=p=>readFile(p,'utf8');
+const [layout,shell,frame,lesson,css]=await Promise.all(['app/layout.tsx','app/shell.tsx','app/app-frame.tsx','app/learn/[id]/view.tsx','app/mobile-accessibility.css'].map(read));
+const root=postcss.parse(css),rules=[];
+root.walkRules(r=>rules.push(r));
+const declares=(selector,property,value)=>rules.some(r=>r.selector===selector&&r.nodes.some(n=>n.prop===property&&n.value===value));
+assert(layout.includes('href="#main"')&&layout.includes('انتقل إلى المحتوى'));
+assert(shell.includes('id="main" tabIndex={-1}')&&frame.includes('id="main" tabIndex={-1}'),'skip link targets both normal and focused layouts');
+assert(layout.includes("viewportFit:'cover'"));
+assert(!/maximumScale|userScalable/.test(layout),'browser zoom remains available');
+assert(layout.indexOf("'./mobile-accessibility.css'")>layout.indexOf("'./progression/progression.css'"));
+assert(lesson.includes('tabIndex={0} role="region" aria-label="الكود التوضيحي"'));
+assert(lesson.includes('tabIndex={0} role="region" aria-label="النتيجة المتوقعة للكود"'));
+assert(declares('.code-window pre','overflow-x','auto'),'code can scroll without changing indentation');
+assert(declares('.code-window pre','white-space','pre'));
+assert(declares('.lesson-tabs','height','auto'));
+assert(declares('.order-list button','min-block-size','3rem'));
+assert(declares('.pilot-progress span','white-space','normal'));
+assert(css.includes('env(safe-area-inset-bottom)')&&css.includes('env(safe-area-inset-left)'));
+assert(css.includes('@media(prefers-reduced-motion:reduce)'));
+assert(!/overflow(?:-x)?\s*:\s*(hidden|clip)/.test(css),'do not conceal mobile overflow defects');
+assert(!/font-size\s*:\s*\d+px/.test(css),'new text sizing respects browser font settings');
+console.log('PASS: parsed mobile styles, focusable skip targets/code regions, flexible tabs/steps, touch targets, safe areas, font scaling, zoom and reduced motion. No browser/device claim.');

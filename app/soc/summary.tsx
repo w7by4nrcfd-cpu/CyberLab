@@ -1,0 +1,5 @@
+'use client';
+import {useEffect,useState} from 'react';
+import {Activity,ArrowLeft} from 'lucide-react';
+import {useProgress} from '@/app/shell';
+export default function SocSummary(){const {user}=useProgress(),[stats,setStats]=useState<{newAlerts:number;activeCases:number;progress:number}|null>(null);useEffect(()=>{if(!user)return;let active=true;fetch('/api/soc',{cache:'no-store'}).then(async r=>{if(r.ok){const d=await r.json() as {stats:typeof stats};if(active)setStats(d.stats)}}).catch(()=>{});return()=>{active=false}},[user]);return <section className="soc-dashboard-link"><span className="soc-dashboard-icon"><Activity size={23}/></span><div><span className="eyebrow">NEXACORP / SECURITY OPERATIONS</span><h2>SOC Console</h2><p>{user?stats?`${stats.newAlerts} تنبيهات جديدة · ${stats.activeCases} قضايا نشطة · ${stats.progress}% من تدريب SOC`:'تُحمّل ملخص نوبة SOC…':'حقّق في تنبيهات NexaCorp ضمن بيئة تدريبية آمنة.'}</p></div><a className="secondary-button" href="/soc">فتح المركز <ArrowLeft size={16}/></a></section>}

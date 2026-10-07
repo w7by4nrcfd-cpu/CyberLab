@@ -1,0 +1,718 @@
+[
+  {
+    "viewport": 375,
+    "route": "/",
+    "overflow": false,
+    "scroll": 360,
+    "title": "خطوتك التالية",
+    "url": "http://terminal.local:4173/",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/experience/nexacorp-first?step=inspect",
+    "overflow": false,
+    "scroll": 360,
+    "title": "ماذا تعرف من البلاغ؟",
+    "url": "http://terminal.local:4173/experience/nexacorp-first?step=explore",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/experience/nexacorp-email?step=explore&field=headers",
+    "overflow": false,
+    "scroll": 360,
+    "title": "من إشارة إلى قرار أمني",
+    "url": "http://terminal.local:4173/experience/nexacorp-email?step=result&field=headers",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/campaigns/first-signal?step=evidence",
+    "overflow": false,
+    "scroll": 375,
+    "title": "الرسالة، الموظفة، ثم الجلسة",
+    "url": "http://terminal.local:4173/campaigns/first-signal?step=evidence",
+    "width": 375
+  },
+  {
+    "viewport": 375,
+    "route": "/soc/alerts/SOC-002?view=guided",
+    "overflow": false,
+    "scroll": 360,
+    "title": "أكملت التحقيق والاستجابة",
+    "url": "http://terminal.local:4173/soc/alerts/SOC-002?view=guided&step=result",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/investigations/soc-SOC-002?journey=core",
+    "overflow": false,
+    "scroll": 360,
+    "title": "تحليلك وعلاقاتك محفوظة",
+    "url": "http://terminal.local:4173/investigations/soc-SOC-002?journey=core&step=result",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/labs/v2/v2-auth-session",
+    "overflow": false,
+    "scroll": 375,
+    "title": "تقييم المصادقة والجلسة",
+    "url": "http://terminal.local:4173/labs/v2/v2-auth-session",
+    "width": 375
+  },
+  {
+    "viewport": 375,
+    "route": "/investigations/dynamic-endpoint-40002454?step=observe&field=context",
+    "overflow": false,
+    "scroll": 360,
+    "title": "ما الذي يثبته كل مصدر؟",
+    "url": "http://terminal.local:4173/investigations/dynamic-endpoint-40002454?step=observe&field=context",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/progress",
+    "overflow": false,
+    "scroll": 360,
+    "title": "رحلتك في CyberLab",
+    "url": "http://terminal.local:4173/progress",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/achievements",
+    "overflow": false,
+    "scroll": 360,
+    "title": "مركز الإنجازات",
+    "url": "http://terminal.local:4173/achievements",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/roadmap",
+    "overflow": false,
+    "scroll": 360,
+    "title": "أين أنا؟ وإلى أين يمكنني التقدم؟",
+    "url": "http://terminal.local:4173/roadmap",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/learn",
+    "overflow": false,
+    "scroll": 360,
+    "title": "مكتبة المعرفة السيبرانية",
+    "url": "http://terminal.local:4173/learn",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/operations/nexacorp",
+    "overflow": false,
+    "scroll": 360,
+    "title": "NexaCorp",
+    "url": "http://terminal.local:4173/operations/nexacorp",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/profile",
+    "overflow": false,
+    "scroll": 360,
+    "title": "الملف الشخصي",
+    "url": "http://terminal.local:4173/profile",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/skills",
+    "overflow": false,
+    "scroll": 360,
+    "title": "مهاراتك",
+    "url": "http://terminal.local:4173/skills",
+    "width": 360
+  },
+  {
+    "viewport": 375,
+    "route": "/career",
+    "overflow": false,
+    "scroll": 360,
+    "title": "رحلتك المهنية داخل CyberLab",
+    "url": "http://terminal.local:4173/career",
+    "width": 360
+  },
+  {
+    "viewport": 390,
+    "route": "/",
+    "overflow": false,
+    "scroll": 375,
+    "title": "خطوتك التالية",
+    "url": "http://terminal.local:4173/",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/experience/nexacorp-first?step=inspect",
+    "overflow": false,
+    "scroll": 375,
+    "title": "ماذا تعرف من البلاغ؟",
+    "url": "http://terminal.local:4173/experience/nexacorp-first?step=explore",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/experience/nexacorp-email?step=explore&field=headers",
+    "overflow": false,
+    "scroll": 375,
+    "title": "من إشارة إلى قرار أمني",
+    "url": "http://terminal.local:4173/experience/nexacorp-email?step=result&field=headers",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/campaigns/first-signal?step=evidence",
+    "overflow": false,
+    "scroll": 390,
+    "title": "الرسالة، الموظفة، ثم الجلسة",
+    "url": "http://terminal.local:4173/campaigns/first-signal?step=evidence",
+    "width": 390
+  },
+  {
+    "viewport": 390,
+    "route": "/soc/alerts/SOC-002?view=guided",
+    "overflow": false,
+    "scroll": 375,
+    "title": "أكملت التحقيق والاستجابة",
+    "url": "http://terminal.local:4173/soc/alerts/SOC-002?view=guided&step=result",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/investigations/soc-SOC-002?journey=core",
+    "overflow": false,
+    "scroll": 375,
+    "title": "تحليلك وعلاقاتك محفوظة",
+    "url": "http://terminal.local:4173/investigations/soc-SOC-002?journey=core&step=result",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/labs/v2/v2-auth-session",
+    "overflow": false,
+    "scroll": 390,
+    "title": "تقييم المصادقة والجلسة",
+    "url": "http://terminal.local:4173/labs/v2/v2-auth-session",
+    "width": 390
+  },
+  {
+    "viewport": 390,
+    "route": "/investigations/dynamic-endpoint-40002454?step=observe&field=context",
+    "overflow": false,
+    "scroll": 375,
+    "title": "ما الذي يثبته كل مصدر؟",
+    "url": "http://terminal.local:4173/investigations/dynamic-endpoint-40002454?step=observe&field=context",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/progress",
+    "overflow": false,
+    "scroll": 375,
+    "title": "رحلتك في CyberLab",
+    "url": "http://terminal.local:4173/progress",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/achievements",
+    "overflow": false,
+    "scroll": 375,
+    "title": "مركز الإنجازات",
+    "url": "http://terminal.local:4173/achievements",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/roadmap",
+    "overflow": false,
+    "scroll": 375,
+    "title": "أين أنا؟ وإلى أين يمكنني التقدم؟",
+    "url": "http://terminal.local:4173/roadmap",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/learn",
+    "overflow": false,
+    "scroll": 375,
+    "title": "مكتبة المعرفة السيبرانية",
+    "url": "http://terminal.local:4173/learn",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/operations/nexacorp",
+    "overflow": false,
+    "scroll": 375,
+    "title": "NexaCorp",
+    "url": "http://terminal.local:4173/operations/nexacorp",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/profile",
+    "overflow": false,
+    "scroll": 375,
+    "title": "الملف الشخصي",
+    "url": "http://terminal.local:4173/profile",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/skills",
+    "overflow": false,
+    "scroll": 375,
+    "title": "مهاراتك",
+    "url": "http://terminal.local:4173/skills",
+    "width": 375
+  },
+  {
+    "viewport": 390,
+    "route": "/career",
+    "overflow": false,
+    "scroll": 375,
+    "title": "رحلتك المهنية داخل CyberLab",
+    "url": "http://terminal.local:4173/career",
+    "width": 375
+  },
+  {
+    "viewport": 402,
+    "route": "/",
+    "overflow": false,
+    "scroll": 387,
+    "title": "خطوتك التالية",
+    "url": "http://terminal.local:4173/",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/experience/nexacorp-first?step=inspect",
+    "overflow": false,
+    "scroll": 387,
+    "title": "ماذا تعرف من البلاغ؟",
+    "url": "http://terminal.local:4173/experience/nexacorp-first?step=explore",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/experience/nexacorp-email?step=explore&field=headers",
+    "overflow": false,
+    "scroll": 387,
+    "title": "من إشارة إلى قرار أمني",
+    "url": "http://terminal.local:4173/experience/nexacorp-email?step=result&field=headers",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/campaigns/first-signal?step=evidence",
+    "overflow": false,
+    "scroll": 402,
+    "title": "الرسالة، الموظفة، ثم الجلسة",
+    "url": "http://terminal.local:4173/campaigns/first-signal?step=evidence",
+    "width": 402
+  },
+  {
+    "viewport": 402,
+    "route": "/soc/alerts/SOC-002?view=guided",
+    "overflow": false,
+    "scroll": 387,
+    "title": "أكملت التحقيق والاستجابة",
+    "url": "http://terminal.local:4173/soc/alerts/SOC-002?view=guided&step=result",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/investigations/soc-SOC-002?journey=core",
+    "overflow": false,
+    "scroll": 387,
+    "title": "تحليلك وعلاقاتك محفوظة",
+    "url": "http://terminal.local:4173/investigations/soc-SOC-002?journey=core&step=result",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/labs/v2/v2-auth-session",
+    "overflow": false,
+    "scroll": 402,
+    "title": "تقييم المصادقة والجلسة",
+    "url": "http://terminal.local:4173/labs/v2/v2-auth-session",
+    "width": 402
+  },
+  {
+    "viewport": 402,
+    "route": "/investigations/dynamic-endpoint-40002454?step=observe&field=context",
+    "overflow": false,
+    "scroll": 387,
+    "title": "ما الذي يثبته كل مصدر؟",
+    "url": "http://terminal.local:4173/investigations/dynamic-endpoint-40002454?step=observe&field=context",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/progress",
+    "overflow": false,
+    "scroll": 387,
+    "title": "رحلتك في CyberLab",
+    "url": "http://terminal.local:4173/progress",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/achievements",
+    "overflow": false,
+    "scroll": 387,
+    "title": "مركز الإنجازات",
+    "url": "http://terminal.local:4173/achievements",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/roadmap",
+    "overflow": false,
+    "scroll": 387,
+    "title": "أين أنا؟ وإلى أين يمكنني التقدم؟",
+    "url": "http://terminal.local:4173/roadmap",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/learn",
+    "overflow": false,
+    "scroll": 387,
+    "title": "مكتبة المعرفة السيبرانية",
+    "url": "http://terminal.local:4173/learn",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/operations/nexacorp",
+    "overflow": false,
+    "scroll": 402,
+    "url": "http://terminal.local:4173/operations/nexacorp",
+    "width": 402
+  },
+  {
+    "viewport": 402,
+    "route": "/profile",
+    "overflow": false,
+    "scroll": 402,
+    "url": "http://terminal.local:4173/profile",
+    "width": 402
+  },
+  {
+    "viewport": 402,
+    "route": "/skills",
+    "overflow": false,
+    "scroll": 387,
+    "title": "مهاراتك",
+    "url": "http://terminal.local:4173/skills",
+    "width": 387
+  },
+  {
+    "viewport": 402,
+    "route": "/career",
+    "overflow": false,
+    "scroll": 387,
+    "title": "رحلتك المهنية داخل CyberLab",
+    "url": "http://terminal.local:4173/career",
+    "width": 387
+  },
+  {
+    "viewport": 430,
+    "route": "/",
+    "overflow": false,
+    "scroll": 415,
+    "title": "خطوتك التالية",
+    "url": "http://terminal.local:4173/",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/experience/nexacorp-first?step=inspect",
+    "overflow": false,
+    "scroll": 415,
+    "title": "ماذا تعرف من البلاغ؟",
+    "url": "http://terminal.local:4173/experience/nexacorp-first?step=explore",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/experience/nexacorp-email?step=explore&field=headers",
+    "overflow": false,
+    "scroll": 415,
+    "title": "من إشارة إلى قرار أمني",
+    "url": "http://terminal.local:4173/experience/nexacorp-email?step=result&field=headers",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/campaigns/first-signal?step=evidence",
+    "overflow": false,
+    "scroll": 430,
+    "title": "الرسالة، الموظفة، ثم الجلسة",
+    "url": "http://terminal.local:4173/campaigns/first-signal?step=evidence",
+    "width": 430
+  },
+  {
+    "viewport": 430,
+    "route": "/soc/alerts/SOC-002?view=guided",
+    "overflow": false,
+    "scroll": 415,
+    "title": "أكملت التحقيق والاستجابة",
+    "url": "http://terminal.local:4173/soc/alerts/SOC-002?view=guided&step=result",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/investigations/soc-SOC-002?journey=core",
+    "overflow": false,
+    "scroll": 415,
+    "title": "تحليلك وعلاقاتك محفوظة",
+    "url": "http://terminal.local:4173/investigations/soc-SOC-002?journey=core&step=result",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/labs/v2/v2-auth-session",
+    "overflow": false,
+    "scroll": 430,
+    "title": "تقييم المصادقة والجلسة",
+    "url": "http://terminal.local:4173/labs/v2/v2-auth-session",
+    "width": 430
+  },
+  {
+    "viewport": 430,
+    "route": "/investigations/dynamic-endpoint-40002454?step=observe&field=context",
+    "overflow": false,
+    "scroll": 415,
+    "title": "ما الذي يثبته كل مصدر؟",
+    "url": "http://terminal.local:4173/investigations/dynamic-endpoint-40002454?step=observe&field=context",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/progress",
+    "overflow": false,
+    "scroll": 415,
+    "title": "رحلتك في CyberLab",
+    "url": "http://terminal.local:4173/progress",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/achievements",
+    "overflow": false,
+    "scroll": 415,
+    "title": "مركز الإنجازات",
+    "url": "http://terminal.local:4173/achievements",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/roadmap",
+    "overflow": false,
+    "scroll": 415,
+    "title": "أين أنا؟ وإلى أين يمكنني التقدم؟",
+    "url": "http://terminal.local:4173/roadmap",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/learn",
+    "overflow": false,
+    "scroll": 415,
+    "title": "مكتبة المعرفة السيبرانية",
+    "url": "http://terminal.local:4173/learn",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/operations/nexacorp",
+    "overflow": false,
+    "scroll": 430,
+    "url": "http://terminal.local:4173/operations/nexacorp",
+    "width": 430
+  },
+  {
+    "viewport": 430,
+    "route": "/profile",
+    "overflow": false,
+    "scroll": 415,
+    "title": "الملف الشخصي",
+    "url": "http://terminal.local:4173/profile",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/skills",
+    "overflow": false,
+    "scroll": 415,
+    "title": "مهاراتك",
+    "url": "http://terminal.local:4173/skills",
+    "width": 415
+  },
+  {
+    "viewport": 430,
+    "route": "/career",
+    "overflow": false,
+    "scroll": 415,
+    "title": "رحلتك المهنية داخل CyberLab",
+    "url": "http://terminal.local:4173/career",
+    "width": 415
+  },
+  {
+    "viewport": 1280,
+    "route": "/",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "خطوتك التالية",
+    "url": "http://terminal.local:4173/",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/experience/nexacorp-first?step=inspect",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "ماذا تعرف من البلاغ؟",
+    "url": "http://terminal.local:4173/experience/nexacorp-first?step=explore",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/experience/nexacorp-email?step=explore&field=headers",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "من إشارة إلى قرار أمني",
+    "url": "http://terminal.local:4173/experience/nexacorp-email?step=result&field=headers",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/campaigns/first-signal?step=evidence",
+    "overflow": false,
+    "scroll": 1280,
+    "title": "الرسالة، الموظفة، ثم الجلسة",
+    "url": "http://terminal.local:4173/campaigns/first-signal?step=evidence",
+    "width": 1280
+  },
+  {
+    "viewport": 1280,
+    "route": "/soc/alerts/SOC-002?view=guided",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "أكملت التحقيق والاستجابة",
+    "url": "http://terminal.local:4173/soc/alerts/SOC-002?view=guided&step=result",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/investigations/soc-SOC-002?journey=core",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "تحليلك وعلاقاتك محفوظة",
+    "url": "http://terminal.local:4173/investigations/soc-SOC-002?journey=core&step=result",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/labs/v2/v2-auth-session",
+    "overflow": false,
+    "scroll": 1280,
+    "title": "تقييم المصادقة والجلسة",
+    "url": "http://terminal.local:4173/labs/v2/v2-auth-session",
+    "width": 1280
+  },
+  {
+    "viewport": 1280,
+    "route": "/investigations/dynamic-endpoint-40002454?step=observe&field=context",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "ما الذي يثبته كل مصدر؟",
+    "url": "http://terminal.local:4173/investigations/dynamic-endpoint-40002454?step=observe&field=context",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/progress",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "رحلتك في CyberLab",
+    "url": "http://terminal.local:4173/progress",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/achievements",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "مركز الإنجازات",
+    "url": "http://terminal.local:4173/achievements",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/roadmap",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "أين أنا؟ وإلى أين يمكنني التقدم؟",
+    "url": "http://terminal.local:4173/roadmap",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/learn",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "مكتبة المعرفة السيبرانية",
+    "url": "http://terminal.local:4173/learn",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/operations/nexacorp",
+    "overflow": false,
+    "scroll": 1280,
+    "url": "http://terminal.local:4173/operations/nexacorp",
+    "width": 1280
+  },
+  {
+    "viewport": 1280,
+    "route": "/profile",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "الملف الشخصي",
+    "url": "http://terminal.local:4173/profile",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/skills",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "مهاراتك",
+    "url": "http://terminal.local:4173/skills",
+    "width": 1265
+  },
+  {
+    "viewport": 1280,
+    "route": "/career",
+    "overflow": false,
+    "scroll": 1265,
+    "title": "رحلتك المهنية داخل CyberLab",
+    "url": "http://terminal.local:4173/career",
+    "width": 1265
+  }
+]

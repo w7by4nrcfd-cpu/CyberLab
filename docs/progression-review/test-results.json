@@ -1,0 +1,178 @@
+{
+  "build": "PASS",
+  "typeCheck": "PASS",
+  "regressionSuites": 34,
+  "passed": 34,
+  "suites": [
+    {
+      "file": "adaptive-learning.test.mjs",
+      "status": "PASS",
+      "result": "PASS: five adaptive profiles, subskills, explainable hints/score reasons, high XP versus weak mastery, prior for small samples, quick review, live D1 projection, account isolation, no writes, Worker restart and existing routes."
+    },
+    {
+      "file": "answers.test.mjs",
+      "status": "PASS",
+      "result": "PASS: five missions accept normalized answers, aliases, and constrained keyword combinations; reject unrelated, incomplete, negated, or misleading answers."
+    },
+    {
+      "file": "boss-missions.test.mjs",
+      "status": "PASS",
+      "result": "PASS: three Boss investigations, locks, objective dependencies, decisions, report, D1 resume/restart, replay best score, no repeated general or Skill XP, account isolation, normal mission and lesson regressions."
+    },
+    {
+      "file": "campaign.test.mjs",
+      "status": "PASS",
+      "result": "PASS: six chapters/eight existing cases, progressive timeline/evidence, D1 flags and user isolation, retroactive legacy account, refresh/reopen/login, replay XP/Skill XP idempotency, learning API."
+    },
+    {
+      "file": "career.test.mjs",
+      "status": "PASS",
+      "result": "PASS: seven stages, six career profiles, sequential promotions, meaningful readiness, D1 backfill and idempotency, account isolation, restart, unchanged XP and adaptive route."
+    },
+    {
+      "file": "core.test.mjs",
+      "status": "PASS",
+      "result": "PASS: 220 lessons, 17 tracks, 14 labs; malformed answers; pass threshold; all labs; cipher wrap; levels; no client answer keys."
+    },
+    {
+      "file": "curriculum-expansion.test.mjs",
+      "status": "PASS",
+      "result": "PASS: four tracks, twelve coherent modules, 220 preserved IDs, all links and prerequisites valid, twelve guided lessons and nine applied assessments with correct, wrong and malformed submissions."
+    },
+    {
+      "file": "cybersecurity-scope.test.mjs",
+      "status": "PASS",
+      "result": "PASS: 220-lesson audit/195-reference partition; four collapsed directions; existing archived completion/bookmark/URL and original XP totals; scope-prioritized search; cyber-only Continue Learning; Mission-First default; real locked activity and grandfathered completion; read-only progress/skills/career snapshots; refresh/restart/isolation and no duplicate quiz/Skill XP. Compiled UI + real isolated D1, not browser/OAuth/device QA."
+    },
+    {
+      "file": "deep-practice.test.mjs",
+      "status": "PASS",
+      "result": "PASS: 11 existing lessons, guided and independent decisions, wrong/right/alias/malformed grading, detailed feedback, validated lab/mission/boss/SOC routes, 220 stable IDs."
+    },
+    {
+      "file": "dynamic-incidents.test.mjs",
+      "status": "PASS",
+      "result": "PASS: 315 deterministic valid incidents, three difficulty tiers, immutable instances, board/locker/decision/review, replay/new variant, duplicate rejection, account isolation, old V42 data and unchanged XP."
+    },
+    {
+      "file": "final-product-qa.test.mjs",
+      "status": "PASS",
+      "result": "PASS: Version 51 ID/quiz/prerequisite/lab/reward contracts preserved; zero/existing/returning/exhausted Dashboard, read-only old/archived progress, started-lab Search/catalog state, real lock requirements/unlock/URLs, 22-lab counter, existing offensive discovery/auth return, full Knowledge lesson and optional quiz return/replay, wrong SOC primary retry/recovery, persistence/isolation. Compiled UI + isolated local Worker/D1; no real browser/Production OAuth/iPhone/Safari or human-usability study."
+    },
+    {
+      "file": "guided-progression.test.mjs",
+      "status": "PASS",
+      "result": "guided progression: fresh, continuing, completed and foundation order passed"
+    },
+    {
+      "file": "interactive-labs.test.mjs",
+      "status": "PASS",
+      "result": "PASS: five lab types end-to-end, two independent terminal scenarios, D1 reload/restart, existing 100 XP preserved, 75 XP each first completion, skill awards once, replay, filters/evidence, virtual commands, email comparison, five network faults, five transport decisions, three NAT/routing investigations, endpoint/network correlation, HTTP, auth/isolation and learning/mission/campaign/SOC regressions."
+    },
+    {
+      "file": "investigation-board.test.mjs",
+      "status": "PASS",
+      "result": "PASS: three source definitions; durable review/collect/annotations, duplicate and invalid links, structured decision, existing completion, replay, user isolation and unchanged rewards."
+    },
+    {
+      "file": "mission-first-core.test.mjs",
+      "status": "PASS",
+      "result": "PASS: full compiled UI journey network→email→First Signal→SOC→Locker/Board→decision; wrong/recheck/correct, real requirements/deep links, lesson returns, evidence mirroring/deduplication, refresh/restart/account isolation, existing completed read-only states, reward idempotence, advanced Dashboard. No browser/OAuth/visual device QA."
+    },
+    {
+      "file": "mission-first-email.test.mjs",
+      "status": "PASS",
+      "result": "PASS: actual workspace handlers/effects (non-browser), progressive email/card/lesson return, wrong/recheck/correct, refresh, guest replay, legacy completion, XP/Skill XP idempotence, canonical IDs, account isolation and D1 restart."
+    },
+    {
+      "file": "mission-first-expansion.test.mjs",
+      "status": "PASS",
+      "result": "PASS: 39 deterministic connected chains, staged unlocks, legacy progress, account/device/source continuity, temporal consistency, evidence and link correlation, wrong/recheck without answer reveal, containment vs escalation consequences, lesson return, concurrent starts, replay/restart, cross-account local API isolation, unchanged reward ledgers and legacy investigations. Production OAuth/WAF/Safari NOT tested."
+    },
+    {
+      "file": "mission-first-pilot.test.mjs",
+      "status": "PASS",
+      "result": "PASS: canonical NexaCorp/lab/lesson IDs, first case D1 persistence and restart, existing account progress unchanged, account isolation, no standalone reward, beginner gate and safe return paths."
+    },
+    {
+      "file": "missions.test.mjs",
+      "status": "PASS",
+      "result": "PASS: five complete investigations, hints, replay without XP, user isolation, lesson regression, and D1 persistence across Worker restart."
+    },
+    {
+      "file": "navigation.test.mjs",
+      "status": "PASS",
+      "result": "✔ every rendered curriculum card has a matching ID and dynamic page (2.602396ms)\n✔ every learning path and linked challenge resolves to a real track or lab (0.828219ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 7.690342"
+    },
+    {
+      "file": "nexacorp.test.mjs",
+      "status": "PASS",
+      "result": "PASS: company references, network scopes, campaign identities, existing content coverage and read-only activity."
+    },
+    {
+      "file": "offensive-minimum.test.mjs",
+      "status": "PASS",
+      "result": "PASS: compiled three-assessment journey; real Worker/D1 locks and deep links, scoped surface map/classification/priority/validation, session login/logout/correlation/wrong hypotheses, bounded impact, wrong fixes/correct remediation/retest, knowledge return/refresh/restart, completed-user compatibility, unique first/replay/concurrent XP+Skill XP, RTL nodes and mobile CSS rules. No real browser/Production/OAuth/iPhone/Safari test."
+    },
+    {
+      "file": "offensive-pilot.test.mjs",
+      "status": "PASS",
+      "result": "PASS: actual compiled authorization→recon→observation→knowledge/lesson return→wrong hypothesis/recheck→correlated safe tests→bounded impact→wrong fix/retest→server fix/result; real prerequisites, locked search/catalog/deep link, no bypass, deduplication, reload/restart/account isolation/completed access; 75 XP and 25+10 Skill XP once, replay/concurrent completion, old records and scope classification preserved. No browser/OAuth/iPhone/Safari QA."
+    },
+    {
+      "file": "persistence.test.mjs",
+      "status": "PASS",
+      "result": "PASS: new user, one/multiple lessons, full level, two independent tracks, duplicate XP, refresh, sign-out/in, and D1 persistence after Worker restart."
+    },
+    {
+      "file": "progression-review.test.mjs",
+      "status": "PASS",
+      "result": "PASS: compiled achievement overview distinguishes earned/fully completed/upgradable tiers; next achievement stays visible without duplicate cards; locked/earned copy and next-tier counters; preserved level values and one primary action. No browser or Production claim."
+    },
+    {
+      "file": "progression-ui.test.mjs",
+      "status": "PASS",
+      "result": "PASS: real level-up UI, one tier/level status, Arabic copy, initial restore and account change quiet, dismissal, replay without repeated notification."
+    },
+    {
+      "file": "progression-v2.test.mjs",
+      "status": "PASS",
+      "result": "PASS: new user, preserved level/rank/skillXP/career, nine meaningful achievements and six legacy IDs, valid correlation/chain, rejected unproven closure and XP-only mastery, retroactive awards, concurrent single ledger entries, no original-table mutation, no reward changes, replay and restart persistence, local identity isolation, rejected client claims and IDs."
+    },
+    {
+      "file": "ranks.test.mjs",
+      "status": "PASS",
+      "result": "PASS: seven contiguous tiers, level and tier thresholds, existing level 13 account, old-account hydration, refresh, and multi-level promotion."
+    },
+    {
+      "file": "security-readiness.test.mjs",
+      "status": "PASS",
+      "result": "PASS: local built Worker/D1 auth guards, trusted identity requirements, safe redirects, own-account reads/writes, dynamic IDOR negative tests, immutable answer concealment, duplicate evidence, invalid relationships, runtime validation, bounded UTF-8 input, CSRF origin/fetch metadata, JSON enforcement, SQL text isolation, Search HTML escaping, once-only/concurrent quiz XP+Skill XP, atomic rollback/retry, persisted accounts and missing-session guards. Hosted OAuth/token expiry/header sanitization/WAF/browser/Safari NOT tested."
+    },
+    {
+      "file": "site-navigation.test.mjs",
+      "status": "PASS",
+      "result": "PASS: five navigation groups, deep breadcrumbs and module anchor, unified content search, and every destination resolves to a route."
+    },
+    {
+      "file": "skills.test.mjs",
+      "status": "PASS",
+      "result": "PASS: preexisting account backfill; stored totals/levels; lesson idempotency; mission replay; user isolation; XP and stars regression; D1 restart."
+    },
+    {
+      "file": "soc.test.mjs",
+      "status": "PASS",
+      "result": "PASS: ten SOC alerts across true/false/benign, evidence/tools/triage/decision/response, D1 notes, structured case rubric, multi-alert cases, close/reopen/refresh, scoring, one-time Skill XP, general XP and campaign regression, auth and account isolation."
+    },
+    {
+      "file": "ui-polish.test.mjs",
+      "status": "PASS",
+      "result": "PASS: actual compiled Dashboard closed/open disclosures (2 unused GETs→0), Adaptive/Career initial restoration (2 GETs→1; later refresh preserved), one primary action, local Worker route availability/one main/RTL/Focus/no rewards. No browser visual, touch, real OAuth, viewport, CLS or device test."
+    },
+    {
+      "file": "worker.test.mjs",
+      "status": "PASS",
+      "result": "PASS: 326 built-Worker assertions; real D1, concurrent submissions, user isolation, guest behavior, origin validation, all routes."
+    }
+  ]
+}

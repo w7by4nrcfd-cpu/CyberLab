@@ -1,0 +1,7 @@
+const diagrams:Record<string,{title:string;items:{name:string;detail:string}[];footer:string}>= {
+ 'network-6':{title:'عنوان IPv4 مع /24',items:[{name:'192.0.2',detail:'24 بت للشبكة'},{name:'.10',detail:'8 بت للمضيف'}],footer:'قناع 255.255.255.0 يحدد الحد الفاصل، لا يحدد عدد أجهزة الشبكة وحده.'},
+ 'network-10':{title:'طبقات OSI من التطبيق إلى الوسط',items:[{name:'7 التطبيق',detail:'ما يراه البرنامج'},{name:'6 العرض',detail:'صيغة البيانات'},{name:'5 الجلسة',detail:'إدارة الجلسات'},{name:'4 النقل',detail:'TCP / UDP'},{name:'3 الشبكة',detail:'عناوين IP'},{name:'2 ربط البيانات',detail:'إطارات MAC'},{name:'1 الفيزيائية',detail:'الكابل والإشارة'}],footer:'انتقل من الطبقة الأقرب للعرض إلى موضع العطل، بدل القفز إلى استنتاج واحد.'},
+ 'web-6':{title:'رحلة طلب HTTP',items:[{name:'المتصفح',detail:'GET /learn'},{name:'الخادم',detail:'يعالج الطلب'},{name:'الرد',detail:'200 + المحتوى'}],footer:'حالة الرد ورؤوسه ومحتواه تساعدك في تحديد ما حدث.'},
+ 'security-1':{title:'أهداف الحماية الثلاثة',items:[{name:'السرية',detail:'من يستطيع الاطلاع؟'},{name:'السلامة',detail:'هل تغيرت البيانات؟'},{name:'التوافر',detail:'هل الخدمة متاحة؟'}],footer:'قد يخدم إجراء واحد أكثر من هدف، لكن معرفة الهدف تسهل اختيار الضابط.'}
+};
+export default function LessonDiagram({id}:{id:string}){const d=diagrams[id];if(!d)return null;return <figure className="lesson-diagram"><figcaption>{d.title}</figcaption><div>{d.items.map(x=><section key={x.name}><strong>{x.name}</strong><small>{x.detail}</small></section>)}</div><p>{d.footer}</p></figure>}

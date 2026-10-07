@@ -1,0 +1,6 @@
+import {getChatGPTUser} from '@/app/chatgpt-auth';
+import {readResponseChain,startResponseStage} from '@/lib/incident-chain-storage';
+import {readJsonInput,reportServerError,isUserError} from '@/lib/request-validation';
+const headers={'Cache-Control':'private, no-store'};
+export async function GET(){const user=await getChatGPTUser();if(!user)return Response.json({error:'سجّل الدخول لحفظ التحقيق.'},{status:401,headers});try{return Response.json(await readResponseChain(user.userId),{headers})}catch(e){reportServerError('Response chain read failed',e);return Response.json({error:'تعذر استعادة مراحل التحقيق.'},{status:503,headers})}}
+export async function POST(request:Request){const user=await getChatGPTUser();if(!user)return Response.json({error:'سجّل الدخول أولًا.'},{status:401,headers});const parsed=await readJsonInput(request,200,'incident-chain');if(parsed.error)return parsed.error;try{return Response.json(await startResponseStage(user.userId,parsed.data.stage as number),{headers})}catch(e){if(isUserError(e,/مقفلة|غير صالح|تعارض/))return Response.json({error:e.message},{status:/مقفلة/.test(e.message)?403:400,headers});reportServerError('Response chain start failed',e);return Response.json({error:'تعذر فتح القضية. أعد المحاولة.'},{status:503,headers})}}

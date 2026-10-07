@@ -1,0 +1,6 @@
+'use client';
+import Link from '@/components/native-link';
+import {Bell} from 'lucide-react';
+import {useProgress} from '../shell';
+import {lessons,labs} from '@/lib/curriculum';
+export default function Notifications(){const {learning,items}=useProgress();const events=[...learning.activity.filter(a=>a.completedAt).map(a=>({id:a.id,date:a.completedAt!,title:'أكملت درسًا',href:'/learn/'+a.id})),...items.filter(i=>i.kind==='lab').map(i=>({id:i.id,date:i.completedAt,title:'أنجزت مختبرًا',href:'/labs/'+i.id}))].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,20);return <><div className="page-heading"><div><div className="eyebrow">NOTIFICATIONS</div><h1>الإشعارات</h1><p>آخر إنجازاتك داخل CyberLab، مستمدة من النشاط المحفوظ.</p></div><Bell size={36}/></div>{!events.length?<div className="empty-state"><h2>لا إشعارات بعد</h2><p>عندما تكمل درسًا أو مختبرًا يظهر إنجازك هنا.</p><Link href="/learn" className="primary-button">ابدأ التعلم</Link></div>:<div className="lesson-list">{events.map((e,i)=><Link className="lesson-row" href={e.href} key={i}><Bell size={18}/><div><h3>{e.title}: {lessons.find(l=>l.id===e.id)?.title||labs.find(l=>l.id===e.id)?.title}</h3><p>{new Date(e.date).toLocaleString('ar-SA')}</p></div></Link>)}</div>}</>}

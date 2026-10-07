@@ -1,0 +1,39 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {readFile,readdir,mkdtemp,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+const require=createRequire(import.meta.url),wranglerRequire=createRequire(require.resolve('wrangler/package.json'));
+const {build}=createRequire(require.resolve('vite/package.json'))('esbuild');
+const bundle=await build({entryPoints:['lib/career.ts'],bundle:true,platform:'node',format:'esm',write:false,logLevel:'silent'});
+const {careerTracks,evaluateCareer}=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
+const empty=()=>({lessons:[],labs:[],missions:[],soc:[],mastery:[],recommendations:[]});
+const mastery=(ids,score=85)=>ids.map(id=>({id,name:id,mastery:score,band:'Strong',confidence:'established',samples:5,lastPracticed:'2026-09-25',xp:0,subskills:[]}));
+const ready=()=>{const input=empty();input.lessons=['it-1','net-1','sec-1'];input.labs=['v2-terminal','v2-network','v2-email','v2-logs'];input.missions=['005','001','002','003','004','boss-002'];input.soc=['SOC-001','SOC-002'].map(id=>({id,score:85}));input.mastery=mastery(['troubleshooting','linux','networking','cybersecurity','phishing','logs','incident']);input.mastery.find(m=>m.id==='networking').subskills=[{id:'network.dns',mastery:80,samples:4,band:'Strong'}];input.mastery.find(m=>m.id==='logs').subskills=[{id:'soc.triage',mastery:78,samples:4,band:'Strong'}];return input};
+assert.equal(careerTracks[0].stages.length,7);
+const fresh=evaluateCareer(empty());assert.equal(fresh.current.id,'beginner');assert(fresh.next.readiness<100);assert.equal(fresh.currentIndex,0);
+const highXp=empty();highXp.lessons=['it-1','net-1','sec-1'];highXp.labs=['v2-terminal','v2-network','v2-email'];highXp.missions=['005','001','002','003','boss-002'];highXp.mastery=mastery(['troubleshooting','linux','networking','cybersecurity','phishing','logs','incident'],40);highXp.mastery.forEach(s=>s.xp=9000);assert.equal(evaluateCareer(highXp).current.id,'beginner');
+const strongNoBoss=ready();strongNoBoss.missions=strongNoBoss.missions.filter(id=>id!=='boss-002');assert.equal(evaluateCareer(strongNoBoss).current.id,'cybersecurity-trainee');assert(evaluateCareer(strongNoBoss).next.requirementsState.some(r=>r.id==='boss-002'&&!r.done));
+const strongNetwork=ready();strongNetwork.lessons=strongNetwork.lessons.filter(id=>id!=='sec-1');assert.equal(evaluateCareer(strongNetwork).current.id,'network-technician');assert(evaluateCareer(strongNetwork).next.requirementsState.some(r=>r.id==='sec-1'&&!r.done));
+const goal=ready();goal.lessons=goal.lessons.filter(id=>id!=='sec-1');goal.mastery.find(s=>s.id==='logs').mastery=52;goal.recommendations=[{id:'soc.logs',target:'تحليل السجلات',title:'جرّب مختبر تحليل السجلات',href:'/labs/v2/v2-logs',priority:'High',kind:'full-lab',why:[],mastery:52}];const future=evaluateCareer(goal).stages.find(s=>s.id==='junior-soc-analyst');assert.equal(future.careerPractice.href,'/labs/v2/v2-logs');assert(future.careerPractice.reason.includes('Junior SOC Analyst'));
+const socReady=evaluateCareer(ready());assert.equal(socReady.current.id,'junior-soc-analyst');assert.equal(socReady.next.id,'soc-analyst');assert(socReady.next.readiness<100);assert(socReady.next.requirementsState.some(r=>r.kind==='soc-count'&&!r.done));
+const single=ready();single.mastery.find(s=>s.id==='logs').samples=1;assert.equal(evaluateCareer(single).current.id,'cybersecurity-trainee');
+assert.equal(evaluateCareer(empty(),careerTracks[0],3).current.id,'network-technician');
+for(const stage of careerTracks[0].stages)for(const r of stage.requirements)assert(['lesson','lab','mission','boss','mastery','subskill','soc-count','soc-quality'].includes(r.kind));
+
+const modules=['index.js',...(await readdir('dist/server',{recursive:true})).filter(f=>f.endsWith('.js')&&f!=='index.js')].map(f=>({type:'ESModule',path:'dist/server/'+f}));
+const directory=await mkdtemp(join(tmpdir(),'cyberlab-career-'));
+const options={modules,compatibilityDate:'2026-05-15',compatibilityFlags:['nodejs_compat'],d1Databases:['DB'],d1Persist:directory,cf:false};let worker;
+async function call(user='learner'){const headers=user?{'oai-authenticated-user-id':user,'oai-authenticated-user-email':user+'@example.test'}:{};const r=await worker.dispatchFetch('http://local.test/api/career',{headers});return {status:r.status,data:await r.json()}}
+try{const {Miniflare}=await import(wranglerRequire.resolve('miniflare'));worker=new Miniflare(options);const db=await worker.getD1Database('DB');for(const migration of (await readdir('drizzle')).filter(f=>/^\d{4}.*\.sql$/.test(f)).sort())for(const sql of (await readFile('drizzle/'+migration,'utf8')).split('--> statement-breakpoint'))if(sql.trim())await db.prepare(sql.trim()).run();
+ assert.equal((await call(null)).status,401);const first=await call();assert.equal(first.status,200);assert.equal(first.data.current.id,'beginner');assert.equal(first.data.promotions.length,1);assert.equal((await call()).data.promotions.length,1);assert.equal((await call('other')).data.current.id,'beginner');
+ const at='2026-09-25T00:00:00Z';
+ for(const id of ['it-1','net-1','sec-1']){await db.prepare('INSERT INTO progress(user_id,item_id,kind,score,xp,completed_at) VALUES(?,?,?,?,?,?)').bind('learner',id,'quiz',3,100,at).run();await db.prepare('INSERT INTO attempts(user_id,lesson_id,score,total,answers,created_at) VALUES(?,?,?,?,?,?)').bind('learner',id,3,3,'[]',at).run()}
+ for(const id of ['001','002','003','004','005','boss-002'])await db.prepare('INSERT INTO mission_progress(user_id,mission_id,started_at,updated_at,completed_at,score,stars,hints_used,attempts,session_json) VALUES(?,?,?,?,?,?,?,?,?,?)').bind('learner',id,at,at,at,98,3,0,1,JSON.stringify({lastResult:{score:98,hintsUsed:0,mistakes:[]}})).run();
+ for(const id of ['v2-terminal','v2-network','v2-email','v2-logs'])await db.prepare('INSERT INTO interactive_lab_progress(user_id,lab_id,started_at,updated_at,completed_at,best_score,attempts,hints_used,session_json) VALUES(?,?,?,?,?,?,?,?,?)').bind('learner',id,at,at,at,98,1,0,JSON.stringify({lastResult:{passed:true,score:98},terminalScenarioId:'dns'})).run();
+ for(const id of ['SOC-001','SOC-002'])await db.prepare('INSERT INTO soc_investigations(user_id,alert_id,status,started_at,updated_at,closed_at,score,best_score,attempts,session_json) VALUES(?,?,?,?,?,?,?,?,?,?)').bind('learner',id,'Resolved',at,at,at,95,95,1,JSON.stringify({lastResult:{score:95,classificationCorrect:true,responseCorrect:true,priorityCorrect:true}})).run();
+ const beforeXp=await db.prepare("SELECT SUM(xp) AS xp FROM progress WHERE user_id='learner'").first();const filled=await call();assert.equal(filled.status,200);assert(filled.data.currentIndex>0);assert(filled.data.promotions.length>1);assert.equal((await db.prepare("SELECT SUM(xp) AS xp FROM progress WHERE user_id='learner'").first()).xp,beforeXp.xp);
+ const count=filled.data.promotions.length;assert.equal((await call()).data.promotions.length,count);assert.equal((await call('other')).data.promotions.length,1);
+ await worker.dispose();worker=new Miniflare(options);const restarted=await call();assert.equal(restarted.data.promotions.length,count);assert.equal(restarted.data.current.id,filled.data.current.id);assert.equal((await worker.dispatchFetch('http://local.test/api/adaptive',{headers:{'oai-authenticated-user-id':'learner','oai-authenticated-user-email':'learner@example.test'}})).status,200);
+ console.log('PASS: seven stages, six career profiles, sequential promotions, meaningful readiness, D1 backfill and idempotency, account isolation, restart, unchanged XP and adaptive route.');
+}finally{if(worker)await worker.dispose();await rm(directory,{recursive:true,force:true})}

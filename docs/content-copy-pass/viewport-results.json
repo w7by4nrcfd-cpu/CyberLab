@@ -1,0 +1,102 @@
+[
+  {
+    "page": "progress",
+    "width": 375,
+    "contentWidth": 360,
+    "overflow": 0,
+    "primary": [
+      {
+        "height": 48,
+        "top": 389.765625
+      }
+    ],
+    "scrollWidth": 360
+  },
+  {
+    "page": "progress",
+    "width": 390,
+    "contentWidth": 375,
+    "overflow": 0,
+    "primary": [
+      {
+        "height": 48,
+        "top": 389.765625
+      }
+    ],
+    "scrollWidth": 375
+  },
+  {
+    "page": "progress",
+    "width": 402,
+    "contentWidth": 387,
+    "overflow": 0,
+    "primary": [
+      {
+        "height": 48,
+        "top": 389.765625
+      }
+    ],
+    "scrollWidth": 387
+  },
+  {
+    "page": "progress",
+    "width": 430,
+    "contentWidth": 415,
+    "overflow": 0,
+    "primary": [
+      {
+        "height": 48,
+        "top": 389.765625
+      }
+    ],
+    "scrollWidth": 415
+  },
+  {
+    "page": "progress",
+    "width": 1280,
+    "contentWidth": 1265,
+    "overflow": 0,
+    "primary": [
+      {
+        "height": 48,
+        "top": 379.75
+      }
+    ],
+    "scrollWidth": 1265
+  },
+  {
+    "page": "achievements",
+    "width": 375,
+    "contentWidth": 360,
+    "overflow": 0,
+    "scrollWidth": 360
+  },
+  {
+    "page": "achievements",
+    "width": 390,
+    "contentWidth": 375,
+    "overflow": 0,
+    "scrollWidth": 375
+  },
+  {
+    "page": "achievements",
+    "width": 402,
+    "contentWidth": 387,
+    "overflow": 0,
+    "scrollWidth": 387
+  },
+  {
+    "page": "achievements",
+    "width": 430,
+    "contentWidth": 415,
+    "overflow": 0,
+    "scrollWidth": 415
+  },
+  {
+    "page": "achievements",
+    "width": 1280,
+    "contentWidth": 1265,
+    "overflow": 0,
+    "scrollWidth": 1265
+  }
+]

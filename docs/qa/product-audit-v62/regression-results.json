@@ -1,0 +1,150 @@
+[
+  {
+    "file": "adaptive-learning.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "answers.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "boss-missions.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "campaign.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "career.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "core.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "curriculum-expansion.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "cybersecurity-scope.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "deep-practice.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "dynamic-incidents-v2.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "dynamic-incidents.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "final-product-qa.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "guided-progression.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "interactive-labs.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "investigation-board.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "mission-first-core.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "mission-first-email.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "mission-first-expansion.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "mission-first-pilot.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "missions.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "navigation.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "nexacorp.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "offensive-expansion.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "offensive-minimum.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "offensive-pilot.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "persistence.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "progression-review.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "progression-ui.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "progression-v2.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "ranks.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "security-readiness.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "site-navigation.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "skills.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "soc-expansion.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "soc.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "ui-polish.test.mjs",
+    "pass": true
+  },
+  {
+    "file": "worker.test.mjs",
+    "pass": true
+  }
+]

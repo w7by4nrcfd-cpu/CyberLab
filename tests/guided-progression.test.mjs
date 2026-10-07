@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url),{build}=createRequire(require.resolve('vite/package.json'))('esbuild');
+const compiled=await build({entryPoints:['lib/guided-progression.ts'],bundle:true,platform:'node',format:'esm',write:false,logLevel:'silent'});
+const {guidedLesson,foundationStage,foundationTracks}=await import('data:text/javascript;base64,'+Buffer.from(compiled.outputFiles[0].text).toString('base64'));
+const fresh=guidedLesson(new Set());
+assert.equal(fresh.lesson.id,'sec-1','the reference suggestion starts with cybersecurity thinking');
+assert.equal(foundationStage(new Set(),'it').completed,0);
+const one=new Set(['sec-1']);
+assert.equal(guidedLesson(one).lesson.id,'security-1','the next reference follows the cybersecurity foundations');
+assert.equal(guidedLesson(one,[{id:'net-1',completedAt:null}]).lesson.id,'net-1','an unfinished lesson stays first');
+assert.equal(guidedLesson(one,[{id:'sec-1',completedAt:null}]).lesson.id,'security-1','completed activity never becomes the next step again');
+assert.deepEqual([...foundationTracks],['security','network','linux','windows','it','web','crypto']);
+assert.equal(guidedLesson(new Set(),[{id:'it-2',completedAt:null}]).lesson.id,'sec-1','archived activity does not become a primary suggestion');
+console.log('guided progression: fresh, continuing, completed and foundation order passed');

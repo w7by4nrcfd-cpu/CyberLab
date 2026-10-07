@@ -3,6 +3,7 @@ import {createRequire} from 'node:module';
 import {pathToFileURL} from 'node:url';
 import {readFile} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
+import {hasCommit,skipBaseline} from './helpers/git-baseline.mjs';
 const require=createRequire(import.meta.url),viteRequire=createRequire(require.resolve('vite/package.json')),{build}=viteRequire('esbuild'),postcss=viteRequire('postcss'),jsx=pathToFileURL(require.resolve('react/jsx-runtime')).href;
 const b=await build({entryPoints:['app/soc/view.tsx'],bundle:true,platform:'node',format:'esm',write:false,logLevel:'silent',plugins:[{name:'ui',setup(b){
  b.onResolve({filter:/^react\/jsx-runtime$/},()=>({path:jsx,external:true}));
@@ -36,16 +37,16 @@ ui.user={email:'d@example.test'};render();await reply(3,{error:'تعذر تحم�
 
 // Compare the exact competing declarations behind the reported screenshot.
 // This checks cascade priority, not browser layout, painting or Safari glyphs.
-const before=postcss.parse(execFileSync('git',['show','64e9a036c0e8e8a3fe1aa2b8bb0dc9b44429792b:app/globals.css'],{encoding:'utf8'})),after=postcss.parse(await readFile('app/globals.css','utf8')),fixes=postcss.parse(await readFile('app/control-fixes.css','utf8'));
+const cssBaseline='64e9a036c0e8e8a3fe1aa2b8bb0dc9b44429792b',before=hasCommit(cssBaseline)?postcss.parse(execFileSync('git',['show',cssBaseline+':app/globals.css'],{encoding:'utf8'})):null,after=postcss.parse(await readFile('app/globals.css','utf8')),fixes=postcss.parse(await readFile('app/control-fixes.css','utf8'));
 function rule(root,selector){let found;root.walkRules(r=>{if(r.parent.type==='root'&&r.selector.split(',').map(s=>s.trim()).includes(selector))found=r});assert(found,selector);return found}
 function declaration(r,property){return r.nodes.findLast(n=>n.type==='decl'&&n.prop===property)?.value}
 function specificity(selector){const s=selector.replace(/:where\((?:[^()]|\([^()]*\))*\)/g,'').replace(/:not\(([^()]*)\)/g,'$1');return [(s.match(/#[\w-]+/g)||[]).length,(s.match(/\.[\w-]+|\[[^\]]+\]|:[\w-]+/g)||[]).length,(s.match(/(?:^|[\s>+~])(input|label|select|textarea)(?=$|[\s:.#>+~])/g)||[]).length]}
 const compare=(a,b)=>{for(let i=0;i<3;i++)if(a[i]!==b[i])return a[i]-b[i];return 0};
 assert(compare(specificity('.panel label:not(.answer-option)'),specificity('.soc-filters label'))>0,'original generic panel label defeats component flex');
-assert.equal(declaration(rule(before,'.panel label:not(.answer-option)'),'display'),'block');
+if(before)assert.equal(declaration(rule(before,'.panel label:not(.answer-option)'),'display'),'block');else skipBaseline(cssBaseline,'original globals.css cascade reproduction');
 assert(compare(specificity('.panel :where(label:not(.answer-option))'),specificity('.soc-filters label'))<0,'panel default now defers to component layout');
 assert.equal(declaration(rule(after,'.panel :where(label:not(.answer-option))'),'display'),'block','ordinary panel labels retain their default');
-assert.equal(declaration(rule(before,'.soc-page input'),'border'),'1px solid #496353','original late form style adds the inner border');
+if(before)assert.equal(declaration(rule(before,'.soc-page input'),'border'),'1px solid #496353','original late form style adds the inner border');
 assert(compare(specificity('.soc-page :where(input,textarea,select)'),specificity('.soc-filters input'))<0,'general form default no longer defeats filters');
 assert.equal(declaration(rule(fixes,'.soc-page .soc-filter-control>input'),'border'),'0');assert.equal(declaration(rule(fixes,'.soc-page .soc-filter-control'),'border'),'1px solid var(--border)');
 assert.equal(declaration(rule(fixes,'.soc-page .soc-filter-select>select'),'appearance'),'none','one caret, not native plus custom arrows');

@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Typecheck, lint, build & tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm exec tsc --noEmit
+
+      # Pre-existing findings (see PRACTICAL_WORKBENCH.md; native <a> links are
+      # intentional). Reported but not blocking until they are cleaned up.
+      - name: Lint (report only)
+        continue-on-error: true
+        run: pnpm run lint
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Tests
+        shell: bash
+        run: |
+          failed=()
+          for t in tests/*.test.mjs; do
+            echo "::group::$t"
+            if ! timeout 600 node "$t"; then failed+=("$t"); fi
+            echo "::endgroup::"
+          done
+          if [ ${#failed[@]} -gt 0 ]; then
+            printf '::error::Failed: %s\n' "${failed[@]}"
+            exit 1
+          fi
